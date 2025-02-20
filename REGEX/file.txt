@@ -1,0 +1,149 @@
+# https://davidbernalgonzalez.notion.site/2-Expresiones-regulares-f7947d5ee4124da0a140a45506434956
+
+123
+234
+123456123456
+1234567
+
+^\d{3}
+
+
+ojo loro rioja hoja
+  
+ 
+
+a, b, c, d, e, f, g, h, i, j, k, l, m, n, ñ, o, p, q, r, s, t, u, v, w, x, y, z
+
+(ñ,\s)(.*)
+$2
+
+# selecciona el grupo 2 y solamente guarda ese. el primero es desechado 
+# () -> crea grupos de lo que haya dentro
+
+
+ojo cojo ojímetro
+ojo con el perro
+ojeando el metro
+
+# [] busca todo lo que ha dentro de manera junto e independiente. Ej -> [ro]
+# dentro de esta 'caja' si se pone ^ -> [^] significa que esos caracteres se evitan. Ej -> [^ro]
+
+
+abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ
+
+# Buscar [a-zñ] busca las letras de abecedario y la ñ. 
+# [A-ZÑ] Lo mismo pero en mayuscula
+# [a-zñA-ZÑ] todo junto
+# - es un entre los caracteres de enmedio
+
+
+[À-ÿ]
+áéíóúàèìòùäëïöññÁÉÍÓÚÀÈÌÒÙÄËÏÖÑÑ
+
+
+
+
+
+pit
+spot
+spate
+spate
+slap two
+respite
+
+(\w+)(\s\w+)?
+
+
+rap them
+tapeth
+apth
+wrap/try
+sap tray
+87ap9th
+apothecary
+
+(\w+)((/|\s)\w+)?
+
+
+affgfking
+rafgkahe
+bafghk
+baffgkit
+affgfking
+rafgkahe
+bafghk
+baffg kit
+
+(\w+)(\s\w+)?
+
+
+assumes word senses. Within
+does the clustering. In the
+but when? It was hard to tell
+he arrive." After she had
+mess! He did not let it
+it wasn't hers!' She replied
+always thought so.) Then
+
+[\w\.)"'!\s?]+
+
+
+12 - 12 = 0
+56 - 56 = 0
+0 - 0 = 0
+0 - 13 = - 13
+25 - 0 = 25
+
+(\d+\s.\s)+(-\s)?(\d+)
+
+
+goon
+spoon
+soon
+raccoon
+
+\w+
+
+
+(div)exercising(/div)
+(div)exe(br)rcising(/div)
+(div)exercising(/div)(br)
+(div)exer(br)cis(br)ing(/div)(br)
+
+(([(/)]+\w+[()])(\w+)([(/)]+\w+[()]))((\w+)?([(/)]+\w+[()])?)+
+
+
+das
+weq
+czx
+tyr
+hfg
+nvb
+124
+
+(\w{3}|\d{3})
+
+
+****+
+***+*
+**+**
+*+***
++****
+
+[*\+]+
+
+
+
+[\s\t]+
+
+([\w\d_\.-]+@\w+\.\w+)
+
+([\w\d_\.-]+@\w+\.\w+)([\s\w\dñí]+)
+
+([\w\d_\.-]+@\w+\.\w+)
+
+((\d+\s)([\wñiÍ]+\s)+)([\w\d_\.-]+@\w+\.\w+)([\s\w\dñí]+)
+
+([\w\d_\.-]+@\w+\.\w+)([\s\w\dñí]+)
+
+((\d+\s.)([.\d\wñÑiÍ]+\s)+)([\w\d_\.-]+@\w+\.\w+)([\s\w\dñí]+)
