@@ -40,3 +40,6 @@ Si lo hemos seguido todo de manera correcta los cambios de seberian de poner ya 
 | git clone "url"          | Clona un reposotirio                                                                                  |
 | git status               | Permite ver el restado actual del repositorio                                                         |
 | git log                  | Permite ver los comits, ramas... en el repositorio                                                    |
+
+
+[GitHub repo02](https://github.com/JorgitoslotX07/repo02)
