@@ -7,27 +7,21 @@
   </head>
   <body>
     <form action="https://formsubmit.co/tjorda04@gmail.com" method="POST">
-      <input
-        type="text"
-        name="name"
-        placeholder="Intrduce un mesanje"
-        required
-      />
+      <label for="name">Introduce un mensaje -> </label>
+      <input type="text" name="name" required />
       <br />
-      <input
-        type="email"
-        name="email"
-        placeholder="Intrduce un email"
-        readonld
-      />
-      <br />
+      <label for="email">Introduce tu email -> </label>
+      <input type="email" name="email" readonld />
+      <!-- <br />
+      <label for="phone">Introduce tu numero -> </label>
       <input
         name="phone"
-        type="text"
+        type="number"
         placeholder="Enter 9 digits of your phone"
         pattern="[0-9]{9}$"
         required
-      />
+      /> -->
+      <!-- ! El numero se encuentra comentado dado que si esta activo no llegara ningun email -->
       <br />
       <button type="submit">Submit</button>
     </form>
