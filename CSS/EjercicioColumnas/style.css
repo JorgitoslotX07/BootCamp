@@ -1,0 +1,21 @@
+html body {
+  background-color: rgb(209, 206, 206);
+}
+
+p {
+  column-count: 3;
+  column-gap: 40px;
+  column-rule: 2px red double;
+  column-rule-style: ridge;
+}
+git p::selection {
+  color: rgb(231, 135, 135);
+  background-color: rgb(11, 78, 7);
+}
+
+h1 {
+  display: inline-block;
+}
+h1:hover {
+  color: rgb(4, 176, 4);
+}
