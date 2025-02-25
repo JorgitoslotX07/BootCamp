@@ -1,0 +1,54 @@
+/* .attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+} */
+
+@font-face {
+  font-family: "Lexend Deca";
+  src: ("./fontFamily/Lexend_Deca/LexendDeca-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "Big Shoulders Display";
+  src: (
+    "./fontFamily/Big_Shoulders_Display/BigShouldersDisplay-VariableFont_wght.ttf"
+  );
+}
+
+p {
+  color: hsla(0, 0%, 100%, 0.75);
+  font-size: 15px;
+  font-family: "Lexend Deca";
+  font-weight: 400;
+}
+h2 {
+  color: hsl(0, 0%, 95%);
+  font-family: "Big Shoulders Display";
+  font-weight: 700;
+}
+
+main {
+  display: flex;
+  justify-content: space-between;
+}
+
+article {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+}
+
+#sedans {
+  background-color: hsl(31, 77%, 52%);
+}
+
+#suvs {
+  background-color: hsl(184, 100%, 22%);
+}
+
+#luxury {
+  background-color: hsl(179, 100%, 13%);
+}
