@@ -1,0 +1,84 @@
+/* ? 1. Selecciona todos los elementos  */
+/* * {
+  background-color: silver;
+} */
+
+/* ? 2. Selecciona todos los elementos que sean de tipo P  */
+/* p {
+  background-color: silver;
+} */
+
+/* ? 3. Selecciona el elemento con ID title-1  */
+/* #title-1 {
+    background-color: silver;
+} */
+
+/* ? 4. Selecciona todos los elementos que pertenezcan a la clase .bg-yellow  */
+/* .bg-yellow {
+  background-color: silver;
+} */
+/* ? 5. Selecciona todos los elementos que tengan el atributo ID  */
+/* [id] {
+  background-color: silver;
+} */
+
+/* ? 6. Selecciona todos los elementos que tengan el atributo ID y como valor title-1  */
+/* [id="title-1"] {
+    background-color: silver;
+} */
+
+/* ? 7. Selecciona todos los elementos que tengan el atributo HREF con un valor https: //www.yahoo.com   */
+/* [href="https://www.yahoo.com"] {
+    background-color: silver;
+} */
+
+/* ? 8. Selecciona todos los elementos que tengan el atributo class con un valor que empiece por title  */
+/* [class|="title"] {
+    background-color: silver;
+} */
+
+/* ? 9. Selecciona todos los elementos que tengan el atributo HREF y que acaben en .com  */
+/* [href$=".com"] {
+    background-color: silver;
+} */
+
+/* ? 10. Selecciona todos los elementos que tengan el atributo class con un valor title, title-1,title-2… */
+/* [class*="title"] {
+    background-color: silver;
+} */
+
+/* ? 11. Selecciona los elementos que tengan un atributo href y cuyo valor contenga 127  */
+/* [href*="127"] {
+    background-color: silver;
+} */
+
+/* ? 12. Selecciona todos los elementos que tengan el atributo href y cuyo valor empiece por http  */
+/* [href^="http"] {
+    background-color: silver;
+} */
+
+/* ? 13. Selecciona los elementos que sean A,P,o H1 desde una única regla CSS  */
+/* a, p, h1 {
+    background-color: silver;
+} */
+
+/* ? 14. Selecciona todos los elementos que pertenezcan a main y que sean P  */
+/* main p {
+     background-color: silver;
+} */
+
+/* ? 15. Selecciona el siguiente elemento que sea hermano de H1 */
+/* h1 + *{
+  background-color: silver;
+} */
+
+/* ? 16. Selecciona todos los elementos que sean hermanos de H1 */
+/* h1 ~ * {
+     background-color: silver;
+} */
+
+/* ? 17. Selecciona todos los elementos hijos directos de main */
+
+/* main > * {
+  background-color: silver;
+} */
