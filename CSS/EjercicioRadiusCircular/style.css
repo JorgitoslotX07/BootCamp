@@ -1,0 +1,28 @@
+body {
+  background-color: rgb(214, 247, 247);
+}
+main {
+  text-align: center;
+}
+
+.mg {
+  font-weight: 700;
+  background-color: #00a8ff;
+}
+
+table {
+  border: 5px solid black;
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+  background-color: blanchedalmond;
+  padding-top: 10px;
+}
+
+td {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.gen {
+  border-bottom: 2px solid black;
+  border-left: 1px solid black;
+}
