@@ -6,5 +6,6 @@ div {
   border-left: 8px double black;
   border-bottom: 8px solid red;
   border-right: 8px dashed blue;
-  margin: 40px 30px;
+  margin: auto;
+  margin-top: 50px;
 }
