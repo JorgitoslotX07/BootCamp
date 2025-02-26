@@ -1,0 +1,41 @@
+.box-5 {
+  height: 200px;
+  width: 200px;
+  background-color: red;
+
+  top: 40px;
+  left: 40px;
+  position: absolute;
+}
+
+.cir {
+  height: 30px;
+  width: 30px;
+  background-color: greenyellow;
+  border-radius: 50%;
+  text-align: center;
+  padding-top: 2px;
+
+  position: absolute;
+  display: inline-block;
+}
+
+.box-1 {
+  top: -15px;
+  left: -15px;
+}
+
+.box-2 {
+  top: -15px;
+  right: -15px;
+}
+
+.box-3 {
+  left: -15px;
+  bottom: -15px;
+}
+
+.box-4 {
+  bottom: -15px;
+  right: -15px;
+}

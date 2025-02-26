@@ -1,0 +1,11 @@
+.box {
+  background-color: tomato;
+  margin: 20px;
+  width: 100px;
+  height: 100px;
+  outline: 10px lime dotted;
+}
+
+.box:hover {
+  outline: 6px black dotted;
+}

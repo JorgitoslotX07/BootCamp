@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(214, 247, 247);
+  background-color: #e5e6fb;
 }
 main {
   text-align: center;
@@ -7,14 +7,14 @@ main {
 
 .mg {
   font-weight: 700;
-  background-color: #00a8ff;
+  background-color: #00bcff;
 }
 
 table {
   border: 5px solid black;
   border-top-right-radius: 30px;
   border-top-left-radius: 30px;
-  background-color: blanchedalmond;
+  background-color: #fee4c3;
   padding-top: 10px;
 }
 
