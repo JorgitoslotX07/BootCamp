@@ -38,7 +38,8 @@ main {
 article {
   flex: 1;
   padding: 20px;
-  text-align: center;
+  text-align: left;
+  padding: 4%;
 }
 
 #sedans {
@@ -51,4 +52,21 @@ article {
 
 #luxury {
   background-color: hsl(179, 100%, 13%);
+}
+
+button {
+  border-radius: 40px;
+  border: none;
+  color: hsl(31, 77%, 52%);
+  background-color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+button:hover {
+  color: hsl(31, 77%, 52%);
+  background-color: white;
+  border: 2px white solid;
 }
