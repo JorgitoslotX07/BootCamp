@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+}
+.blo-1 {
+  background-color: red;
+  width: 100vw;
+  height: 15vh;
+}
+
+.blo-2 {
+  background-color: blue;
+  width: 100vw;
+  height: 5vh;
+}
+
+.blo-3 {
+  background-color: rgb(248, 177, 232);
+  width: 58vw;
+  height: 75vh;
+  float: left;
+}
+
+.blo-4 {
+  background-color: rgb(234, 49, 191);
+  width: 37vw;
+  height: 75vh;
+  float: right;
+}
+
+.blo-5 {
+  background-color: lime;
+  width: 100vw;
+  height: 5vh;
+  clear: both;
+}

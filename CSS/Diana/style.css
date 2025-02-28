@@ -65,8 +65,9 @@ main {
   width: 200px;
   background-color: blue;
 }
-
+/* 
 #estrella {
+  background-color: blue;
   margin: 50px 0;
   position: relative;
   display: block;
@@ -102,4 +103,135 @@ main {
   border-left: 100px solid transparent;
   transform: rotate(-70deg);
   content: "";
+} */
+
+#estrella {
+  background-color: blue;
+  margin: 50px 0;
+  top: 20px;
+  left: 20px;
+  position: relative;
+  display: block;
+  width: 0px;
+  /* height: 0px; */
+  border-right: 80px solid transparent;
+  border-bottom: 56px solid white;
+  border-left: 80px solid transparent;
+  transform: rotate(35deg);
+}
+
+#estrella:before {
+  border-bottom: 64px solid white;
+  border-left: 24px solid transparent;
+  border-right: 24px solid transparent;
+  position: absolute;
+  top: -36px;
+  left: -52px;
+  display: block;
+  content: "";
+  transform: rotate(-35deg);
+}
+
+#estrella:after {
+  position: absolute;
+  display: block;
+  top: 2px;
+  left: -84px;
+  border-right: 80px solid transparent;
+  border-bottom: 56px solid white;
+  border-left: 80px solid transparent;
+  transform: rotate(-70deg);
+  content: "";
+}
+
+/* ! APARTADO PATITO */
+
+.pat {
+  height: 30px;
+  position: absolute;
+  z-index: 100;
+}
+
+/* .pat-1 {
+  top: 40px;
+  left: 50px;
+} */
+
+.pat-2 {
+  top: 220px;
+  left: 15px;
+}
+
+.pat-3 {
+  top: 310px;
+  left: 170px;
+}
+
+.pat-4 {
+  top: 200px;
+  left: 302px;
+}
+
+.pat-5 {
+  top: 32px;
+  left: 250px;
+}
+
+.pat-6 {
+  top: 150px;
+  left: 145px;
+  height: 40px;
+}
+
+.som {
+  height: 25px;
+  top: 142px;
+  left: 151px;
+  z-index: 110;
+  position: absolute;
+  transform: rotate(-25deg) scaleX(-1);
+}
+
+.rev {
+  top: 167px;
+  left: 162px;
+  height: 15px;
+  z-index: 110;
+  position: absolute;
+  transform: rotate(-15deg);
+}
+
+.pat-rot {
+  top: 152px;
+  left: 152px;
+}
+.rot {
+  animation: rotate 10s linear infinite;
+  position: relative;
+  width: 340px;
+  height: 340px;
+}
+.pat-1 {
+  transform: rotate(0deg) translate(155px) rotate(0deg);
+}
+.pat-2 {
+  transform: rotate(72deg) translate(155px) rotate(0deg);
+}
+.pat-3 {
+  transform: rotate(144deg) translate(155px) rotate(0deg);
+}
+.pat-4 {
+  transform: rotate(216deg) translate(155px) rotate(0deg);
+}
+.pat-5 {
+  transform: rotate(288deg) translate(155px) rotate(0deg);
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
