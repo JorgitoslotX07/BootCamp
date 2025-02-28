@@ -157,7 +157,7 @@ main {
   left: 50px;
 } */
 
-.pat-2 {
+/* .pat-2 {
   top: 220px;
   left: 15px;
 }
@@ -175,7 +175,7 @@ main {
 .pat-5 {
   top: 32px;
   left: 250px;
-}
+} */
 
 .pat-6 {
   top: 150px;
@@ -206,7 +206,6 @@ main {
   left: 152px;
 }
 .rot {
-  animation: rotate 10s linear infinite;
   position: relative;
   width: 340px;
   height: 340px;
@@ -234,4 +233,8 @@ main {
   to {
     transform: rotate(360deg);
   }
+}
+
+.rot {
+  animation: rotate 10s linear infinite;
 }
