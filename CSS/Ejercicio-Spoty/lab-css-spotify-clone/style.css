@@ -1,0 +1,148 @@
+body {
+  color: #1a1a1a;
+  margin: 0px;
+  font-family: monospace;
+}
+/* Nav Bar */
+
+.menu {
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+  margin-right: 15px;
+}
+
+.box-1 {
+  margin-top: 0px;
+  display: flex;
+
+  background-image: url("./images/landing.jpg");
+  background-size: cover;
+  background-position: center bottom;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.box-1 p {
+  margin: 0px;
+}
+.box-1 h1 {
+  margin: 0px 0px 20px;
+}
+
+.box-2 {
+  text-align: center;
+}
+
+.mid {
+  display: flex;
+  justify-content: center;
+}
+
+.MinBox {
+  height: 200px;
+  width: 200px;
+  padding: 0px 30px 10px;
+}
+
+.subrallado {
+  font-size: 30px;
+  text-decoration: underline;
+  text-decoration-color: #00b172;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+}
+
+.textoVerde {
+  font-size: 20px;
+  font-weight: 900;
+  color: #00b172;
+}
+.textoVerde + p {
+  font-size: 16px;
+}
+
+.box-3 {
+  background-color: #00b172;
+  background-image: url("./images/spotify-icon-white.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100px;
+
+  margin: 0px 20px;
+  color: #fff;
+  padding: 75px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.desB3 h2 {
+  font-size: 35px;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  margin-bottom: 40px;
+}
+
+.h3Fin {
+  margin-top: 30px;
+  font-size: 25px;
+}
+
+.h3Fin + p {
+  font-size: 16px;
+}
+@media (769px < width) {
+  .navbar img {
+    float: left;
+  }
+  .box-1 {
+    height: 700px;
+  }
+
+  .box-1 p {
+    font-size: 30px;
+  }
+  .box-1 h1 {
+    font-size: 65px;
+  }
+
+  .h3Fin + p {
+    width: 45%;
+  }
+  .mid {
+    gap: 25px;
+  }
+}
+
+@media (width <= 768px) {
+  /* .navbar img {
+    position: relative;
+    text-align: center;
+  } */
+  .menu {
+    clear: both;
+    justify-content: center;
+  }
+  .box-1 {
+    height: 400px;
+  }
+
+  .box-1 p {
+    font-size: 30px;
+    margin: 0px 30px;
+  }
+  .box-1 h1 {
+    font-size: 45px;
+    margin: 0px 20px;
+  }
+  .mid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .box-3 {
+    flex-direction: column;
+  }
+}
