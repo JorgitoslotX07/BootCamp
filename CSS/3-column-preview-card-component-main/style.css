@@ -13,27 +13,28 @@
 }
 
 @font-face {
-  font-family: "Lexend Deca";
-  src: ("./fontFamily/Lexend_Deca/LexendDeca-VariableFont_wght.ttf");
+  font-family: "LexendDeca";
+  src: url("./fontFamily/Lexend_Deca/LexendDeca-VariableFont_wght.ttf")
+    format("truetype");
 }
 
 @font-face {
   font-family: "Big Shoulders Display";
-  src: (
-    "./fontFamily/Big_Shoulders_Display/BigShouldersDisplay-VariableFont_wght.ttf"
-  );
+  src: url("./fontFamily/Big_Shoulders_Display/BigShouldersDisplay-VariableFont_wght.ttf")
+    format("truetype");
 }
 
 p {
   color: hsla(0, 0%, 100%, 0.75);
-  font-size: 15px;
-  font-family: "Lexend Deca";
+  font-size: 16px;
+  font-family: "LexendDeca";
   font-weight: 400;
 }
 h2 {
   color: hsl(0, 0%, 95%);
   font-family: "Big Shoulders Display";
   font-weight: 700;
+  font-size: 50px;
 }
 
 main {
@@ -46,6 +47,10 @@ article {
   padding: 20px;
   text-align: left;
   padding: 4%;
+  height: 80vh;
+
+  display: flex;
+  flex-direction: column;
 }
 
 #sedans {
@@ -61,6 +66,8 @@ article {
 }
 
 button {
+  margin-top: auto;
+
   border-radius: 40px;
   border: none;
   background-color: white;
@@ -70,6 +77,8 @@ button {
   display: inline-block;
   font-size: 16px;
   border: 2px white solid;
+
+  /* align-self: flex-end; */
 }
 
 button.seda {
@@ -96,4 +105,13 @@ button.luxu:hover {
 button:hover {
   color: white;
   cursor: pointer;
+}
+
+@media (width <= 768px) {
+  #sedans {
+    border-top-left-radius: 50%;
+  }
+}
+
+@media (768px < width) {
 }
