@@ -1,0 +1,145 @@
+$colorBack: #f9f9f9;
+$colorBack2: rgb(238, 235, 235);
+$colorSilver: #b3aeae;
+
+body {
+  background: $colorBack;
+}
+
+.buscador {
+  #logo,
+  #imgSearch {
+    float: left;
+  }
+  span {
+    float: right;
+
+    button {
+      background-color: $colorBack;
+      border: none;
+      color: $colorSilver;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  }
+  #search {
+    background-color: $colorBack;
+    background-image: url("./images/search.png");
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
+    padding: 10px 35px;
+
+    &:focus {
+    }
+  }
+}
+
+.menu {
+  border-top: $colorSilver 1px solid;
+  border-bottom: $colorSilver 1px solid;
+  a {
+    display: inline-block;
+    padding: 10px 3px;
+    text-align: center;
+    text-decoration: none;
+    color: $colorSilver;
+    font-size: 14px;
+    &:nth-child(1) {
+      font-weight: 500;
+      background-color: $colorBack2;
+      color: black;
+    }
+  }
+  img {
+    margin-top: 10px;
+    float: right;
+  }
+}
+
+#week,
+#today {
+  margin: 30px 5px;
+  clear: both;
+  h2 {
+    float: left;
+    font-weight: 200;
+    font-size: 20px;
+  }
+  #close {
+    float: right;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .img-app {
+    clear: both;
+    border-top: 1px solid $colorSilver;
+
+    h3 {
+      font-weight: 300;
+      font-size: 20px;
+      margin-bottom: 2px;
+    }
+    p {
+      margin-top: 2px;
+
+      font-size: 14px;
+      color: $colorSilver;
+    }
+    .appImg {
+      float: left;
+      margin: 20px 20px 20px 0px;
+    }
+  }
+}
+#popu {
+  h4 {
+    font-weight: 100;
+    font-size: 13px;
+  }
+  float: right;
+}
+
+.more {
+  margin: 50px 0px;
+  img,
+  p {
+    display: inline;
+  }
+  text-align: center;
+  color: $colorSilver;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.box {
+  padding: 2px;
+  display: flex;
+  align-content: center;
+  margin: 3px 5px;
+  gap: 10px;
+
+  span {
+    border: $colorSilver 1px solid;
+    font-size: 12px;
+    .imgBox {
+      margin: 0px;
+    }
+
+    .vote {
+      height: 20px;
+    }
+    .comm {
+      height: 12px;
+    }
+  }
+}
+
+@media (width <= 600px) {
+  #search {
+    border: none;
+  }
+}

@@ -1,0 +1,136 @@
+body {
+  background: #f9f9f9;
+}
+
+.buscador #logo,
+.buscador #imgSearch {
+  float: left;
+}
+.buscador span {
+  float: right;
+}
+.buscador span button {
+  background-color: #f9f9f9;
+  border: none;
+  color: #b3aeae;
+  font-weight: 700;
+  cursor: pointer;
+}
+.buscador #search {
+  background-color: #f9f9f9;
+  background-image: url("./images/search.png");
+  background-position: 5px 5px;
+  background-repeat: no-repeat;
+  padding: 10px 35px;
+}
+.menu {
+  border-top: #b3aeae 1px solid;
+  border-bottom: #b3aeae 1px solid;
+}
+.menu a {
+  display: inline-block;
+  padding: 10px 3px;
+  text-align: center;
+  text-decoration: none;
+  color: #b3aeae;
+  font-size: 14px;
+}
+.menu a:nth-child(1) {
+  font-weight: 500;
+  background-color: rgb(238, 235, 235);
+  color: black;
+}
+.menu img {
+  margin-top: 10px;
+  float: right;
+}
+
+#week,
+#today {
+  margin: 30px 5px;
+  clear: both;
+}
+#week h2,
+#today h2 {
+  float: left;
+  font-weight: 200;
+  font-size: 20px;
+}
+#week #close,
+#today #close {
+  float: right;
+}
+#week #close:hover,
+#today #close:hover {
+  cursor: pointer;
+}
+#week .img-app,
+#today .img-app {
+  clear: both;
+  border-top: 1px solid #b3aeae;
+}
+#week .img-app h3,
+#today .img-app h3 {
+  font-weight: 300;
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+#week .img-app p,
+#today .img-app p {
+  margin-top: 2px;
+  font-size: 14px;
+  color: #b3aeae;
+}
+#week .img-app .appImg,
+#today .img-app .appImg {
+  float: left;
+  margin: 20px 20px 20px 0px;
+}
+
+#popu {
+  float: right;
+}
+#popu h4 {
+  font-weight: 100;
+  font-size: 13px;
+}
+
+.more {
+  margin: 50px 0px;
+  text-align: center;
+  color: #b3aeae;
+}
+.more img,
+.more p {
+  display: inline;
+}
+.more:hover {
+  cursor: pointer;
+}
+
+.box {
+  padding: 2px;
+  display: flex;
+  align-content: center;
+  margin: 3px 5px;
+  gap: 10px;
+}
+.box span {
+  border: #b3aeae 1px solid;
+  font-size: 12px;
+}
+.box span .imgBox {
+  margin: 0px;
+}
+.box span .vote {
+  height: 20px;
+}
+.box span .comm {
+  height: 12px;
+}
+
+@media (width <= 600px) {
+  #search {
+    border: none;
+  }
+}/*# sourceMappingURL=styles.css.map */

@@ -109,7 +109,12 @@ button:hover {
 
 @media (width <= 768px) {
   #sedans {
-    border-top-left-radius: 50%;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+  }
+  #luxury {
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
   }
 }
 

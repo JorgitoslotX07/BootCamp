@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>CSS Lab | Responsive Cloning | Product Hunt</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="buscador">
+        <img src="./images/logo.png" alt="logo" id="logo" height="35px" />
+        <from action="#">
+          <input
+            type="text"
+            name="search"
+            value=""
+            placeholder="Discover..."
+            id="search"
+          />
+        </from>
+        <span>
+          <button>...</button>
+          <button>Login</button>
+        </span>
+      </div>
+      <div class="menu">
+        <a href="#">Home</a>
+        <a href="#">Tech</a>
+        <a href="#">Games</a>
+        <a href="#">Podcasts</a>
+        <a href="#">Books</a>
+        <a href="#">Bots</a>
+        <a href="#">Developer Tools</a>
+        <a href="#">iMessage Apps</a>
+
+        <img
+          class="flechita"
+          src="./images/arrow-next.png"
+          alt=""
+          height="15px"
+        />
+        <img
+          class="flechita"
+          src="./images/arrow-prev.png"
+          alt=""
+          height="15px"
+        />
+      </div>
+    </header>
+    <main>
+      <article id="week">
+        <img src="./images/close.png" alt="" id="close" height="15px" />
+        <h2>Popular this week</h2>
+        <section>
+          <article class="app1-week img-app">
+            <img
+              class="appImg"
+              src="./images/popular-this-week/app-1.png"
+              alt=""
+            />
+            <h3>Duolingo Bots</h3>
+            <p>Al-powered caracters to teach language conversaation</p>
+
+            <div class="box">
+              <span class="box-1">
+                <img class="imgBox vote" src="./images/votes.png" alt="" />
+                1460
+              </span>
+
+              <span class="box-2">
+                <img class="imgBox comm" src="./images/comments.png" alt="" />
+                49
+              </span>
+            </div>
+          </article>
+          <article class="app2-week img-app">
+            <img
+              class="appImg"
+              src="./images/popular-this-week/app-2.png"
+              alt=""
+            />
+            <h3>Tribe 2.0</h3>
+            <p>Introducion Augmented Messaging</p>
+          </article>
+          <article class="app3-week img-app">
+            <img
+              class="appImg"
+              src="./images/popular-this-week/app-3.png"
+              alt=""
+            />
+            <h3>Workplace by Facebook</h3>
+            <p>Connect everyone in your company and turn ideas into action</p>
+          </article>
+          <article class="more">
+            <img class="appImg" src="./images/arrow-down.png" alt="" />
+            <p>SHOW MORE</p>
+          </article>
+        </section>
+      </article>
+      <article id="today">
+        <h2>Today</h2>
+        <div id="popu">
+          <h4><strong>POPULAR</strong> NEWEST</h4>
+        </div>
+        <section>
+          <article class="app1-today img-app">
+            <img class="appImg" src="./images/today/app-1.png" alt="" />
+            <h3>Sprayscape</h3>
+            <p>A perfectly imperfect VR-ish camera experiment, by Google</p>
+          </article>
+          <article class="app2-today img-app">
+            <img class="appImg" src="./images/today/app-2.png" alt="" />
+            <h3>Ask Gary Vee</h3>
+            <p>The unofficial Gay Vee persona chatbot on Messager!</p>
+          </article>
+          <article class="app3-today img-app">
+            <img class="appImg" src="./images/today/app-3.png" alt="" />
+            <h3>Lattice Reviews</h3>
+            <p>360 degree feedback and performance reviews</p>
+          </article>
+        </section>
+      </article>
+    </main>
+  </body>
+</html>
