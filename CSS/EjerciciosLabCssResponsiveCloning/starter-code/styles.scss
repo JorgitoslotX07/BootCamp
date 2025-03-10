@@ -90,6 +90,7 @@ body {
     .appImg {
       float: left;
       margin: 20px 20px 20px 0px;
+      height: 80px;
     }
   }
 }
@@ -107,6 +108,11 @@ body {
   p {
     display: inline;
   }
+  img {
+    height: 10px;
+  }
+
+  font-size: 12px;
   text-align: center;
   color: $colorSilver;
 
@@ -123,10 +129,14 @@ body {
   gap: 10px;
 
   span {
+    cursor: pointer;
+
     border: $colorSilver 1px solid;
+    gap: 3px;
     font-size: 12px;
     .imgBox {
       margin: 0px;
+      float: left;
     }
 
     .vote {
@@ -134,6 +144,17 @@ body {
     }
     .comm {
       height: 12px;
+      margin: 4px;
+    }
+
+    p {
+      display: inline-block;
+      margin: 0px 4px;
+      float: right;
+    }
+
+    i {
+      margin: 4px;
     }
   }
 }

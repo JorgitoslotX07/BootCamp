@@ -85,6 +85,7 @@ body {
 #today .img-app .appImg {
   float: left;
   margin: 20px 20px 20px 0px;
+  height: 80px;
 }
 
 #popu {
@@ -97,12 +98,16 @@ body {
 
 .more {
   margin: 50px 0px;
+  font-size: 12px;
   text-align: center;
   color: #b3aeae;
 }
 .more img,
 .more p {
   display: inline;
+}
+.more img {
+  height: 10px;
 }
 .more:hover {
   cursor: pointer;
@@ -116,17 +121,29 @@ body {
   gap: 10px;
 }
 .box span {
+  cursor: pointer;
   border: #b3aeae 1px solid;
+  gap: 3px;
   font-size: 12px;
 }
 .box span .imgBox {
   margin: 0px;
+  float: left;
 }
 .box span .vote {
   height: 20px;
 }
 .box span .comm {
   height: 12px;
+  margin: 4px;
+}
+.box span p {
+  display: inline-block;
+  margin: 0px 4px;
+  float: right;
+}
+.box span i {
+  margin: 4px;
 }
 
 @media (width <= 600px) {
