@@ -1,6 +1,7 @@
 $colorBack: #f9f9f9;
 $colorBack2: rgb(238, 235, 235);
 $colorSilver: #b3aeae;
+$colorSilver2: rgb(223, 221, 221);
 
 body {
   background: $colorBack;
@@ -30,6 +31,7 @@ body {
     padding: 10px 35px;
 
     &:focus {
+      border: 1px $colorSilver2 solid;
     }
   }
 }
@@ -55,21 +57,21 @@ body {
     float: right;
   }
 }
+#today {
+  h2 {
+    float: left;
+  }
+}
 
 #week,
 #today {
-  margin: 30px 5px;
+  margin: 20px 5px;
+  padding: 5px 10px;
   clear: both;
   h2 {
-    float: left;
+    display: inline-block;
     font-weight: 200;
     font-size: 20px;
-  }
-  #close {
-    float: right;
-    &:hover {
-      cursor: pointer;
-    }
   }
 
   .img-app {
@@ -94,6 +96,13 @@ body {
     }
   }
 }
+.close {
+  float: right;
+  margin-top: 16px;
+  &:hover {
+    cursor: pointer;
+  }
+}
 #popu {
   h4 {
     font-weight: 100;
@@ -103,7 +112,7 @@ body {
 }
 
 .more {
-  margin: 50px 0px;
+  margin: 50px 0px 20px;
   img,
   p {
     display: inline;
@@ -158,9 +167,61 @@ body {
     }
   }
 }
+.box-XS {
+  display: none;
+}
+
+#noti {
+  color: $colorSilver;
+  margin: 5px;
+  padding: 5px 10px 20px;
+  background-color: $colorBack;
+  text-align: center;
+  p {
+    display: inline-block;
+  }
+  strong {
+    color: black;
+  }
+  form {
+    clear: both;
+  }
+  input {
+    padding: 5px;
+  }
+
+  .sus {
+    padding: 7px;
+    border: 0px;
+    color: $colorBack;
+    border-radius: 2px;
+    background-color: rgb(255, 106, 0);
+  }
+}
 
 @media (width <= 600px) {
   #search {
     border: none;
+  }
+  .box-XS {
+    display: inline;
+  }
+  #noti {
+    display: none;
+  }
+}
+
+@media (width > 600px) {
+  main {
+    padding: 30px 10px;
+    background-color: $colorSilver2;
+  }
+  #search {
+    width: 60vw;
+    border: 1px $colorSilver2 solid;
+  }
+  #week,
+  #today {
+    background: $colorBack;
   }
 }
