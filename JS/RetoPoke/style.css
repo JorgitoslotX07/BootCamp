@@ -1,0 +1,144 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  /* height: 100vh; */
+  margin: 0px;
+}
+
+.pokedex {
+  /* width: 350px; */
+  text-align: center;
+}
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-bar {
+  width: 90%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.card {
+  background-color: orange;
+  margin: 15px;
+  border: black 2px solid;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  width: 80px;
+  height: 80px;
+}
+
+.card h2 {
+  font-size: 16px;
+  margin: 5px 0;
+  color: white;
+}
+
+.card span {
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+#filtros {
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+}
+.type {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 15px;
+  width: 70px;
+  color: white;
+  font-weight: bold;
+  align-items: center;
+}
+
+.acero {
+  background: #5a8ea2;
+}
+.agua {
+  background: #3899f8;
+}
+.bicho {
+  background: #91a119;
+}
+.dragón {
+  background: #5060e1;
+}
+.eléctrico {
+  background: #f8d030;
+  color: black;
+}
+.fantasma {
+  background: #6060b0;
+}
+.fuego {
+  background: #e62829;
+}
+.hada {
+  background: #ee99ac;
+  color: black;
+}
+.hielo {
+  background: #73d0f5;
+  color: black;
+}
+.lucha {
+  background: #c03028;
+}
+.normal {
+  background: #a8a878;
+  color: black;
+}
+.planta {
+  background: #78c850;
+  color: black;
+}
+.psíquico {
+  background: #f85888;
+}
+.roca {
+  background: #b8a038;
+  color: black;
+}
+.siniestro {
+  background: #50413f;
+}
+.tierra {
+  background: #d8a060;
+  color: black;
+}
+.veneno {
+  background: #a040a0;
+}
+.volador {
+  background: #a890f0;
+  color: black;
+}
