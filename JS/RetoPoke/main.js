@@ -50,12 +50,17 @@ const pokedex = () => document.getElementById("grid-container");
 const btnBusc = () => document.getElementById("btnBuscar");
 const ayudaPoke = () => document.getElementById("ayudaPoke");
 const inputBusc = () => document.getElementById("buscar");
+const limpiar = () => document.getElementById("btnLimpiar");
+const filtros = () => document.getElementById("filtros");
+const filtrosFixed = () => document.getElementsByClassName("fixed");
 
 const actualizarPeticion = () => {
   peticionApiPag += 20;
   peticionApiPoke =
     "https://pokeapi.co/api/v2/pokemon?offset=" + peticionApiPag + "&limit=20";
 };
+
+const todoVisible = () => DATA.forEach((obj) => (obj.visibilidad = true));
 
 document.addEventListener("DOMContentLoaded", () => {
   peticioPoke();
@@ -69,6 +74,12 @@ document.addEventListener("DOMContentLoaded", () => {
   let input = inputBusc();
   input.addEventListener("input", () => {
     filtroSearch(false);
+    mostarXInput();
+  });
+
+  let limp = limpiar();
+  limp.addEventListener("click", () => {
+    limpiarTodo();
   });
 });
 
@@ -179,7 +190,7 @@ async function fotoPoke(url) {
 }
 
 function creacionTipoPoke() {
-  let box = document.getElementById("filtros");
+  let box = filtros();
 
   tipoPoke.forEach((po, index) => {
     let fil = document.createElement("div");
@@ -199,6 +210,7 @@ function creacionTipoPoke() {
       }
       console.log(tipoPokeActivo);
       filtroTipo();
+      mostarXFiltros();
     });
 
     box.appendChild(fil);
@@ -211,7 +223,7 @@ function filtroTipo() {
       veriFiltroTipo(e);
     });
   } else {
-    DATA.forEach((obj) => (obj.visibilidad = true));
+    todoVisible();
   }
   actualizarPokedex();
 }
@@ -242,4 +254,43 @@ function actualizarPokedex() {
       cards[index].classList.add("noMostrar");
     }
   });
+}
+
+function mostarXInput() {
+  let btnBusc = inputBusc();
+  let btnLim = limpiar();
+
+  if (btnBusc.value != "") {
+    btnLim.classList.remove("noMostrar");
+  } else {
+    btnLim.classList.add("noMostrar");
+  }
+}
+
+function mostarXFiltros() {
+  let filt = filtrosFixed();
+  let btnLim = limpiar();
+  if (filt.length > 0) {
+    btnLim.classList.remove("noMostrar");
+  } else {
+    btnLim.classList.add("noMostrar");
+  }
+}
+
+function limpiarTodo() {
+  let input = inputBusc();
+  let ayu = ayudaPoke();
+  let filt = filtrosFixed();
+
+  tipoPokeActivo = [];
+  input.value = "";
+  ayu.innerHTML = "";
+
+  let veces = filt.length;
+  for (let i = 0; i < veces; i++) {
+    filt[0].classList.remove("fixed");
+  }
+  todoVisible();
+
+  actualizarPokedex();
 }
