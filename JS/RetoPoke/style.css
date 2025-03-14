@@ -16,11 +16,24 @@ main {
 }
 
 .search-bar {
-  width: 90%;
   padding: 8px;
-  margin-bottom: 10px;
+  width: 200px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.search-button {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
 }
 
 .grid-container {

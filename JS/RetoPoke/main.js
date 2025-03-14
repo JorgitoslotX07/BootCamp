@@ -47,6 +47,9 @@ const tipoPokeIng = [
 let tipoPokeActivo = [];
 
 const pokedex = () => document.getElementById("grid-container");
+const btnBusc = () => document.getElementById("btnBuscar");
+const ayudaPoke = () => document.getElementById("ayudaPoke");
+const inputBusc = () => document.getElementById("buscar");
 
 const actualizarPeticion = () => {
   peticionApiPag += 20;
@@ -57,7 +60,55 @@ const actualizarPeticion = () => {
 document.addEventListener("DOMContentLoaded", () => {
   peticioPoke();
   creacionTipoPoke();
+
+  let busc = btnBusc();
+  busc.addEventListener("click", () => {
+    filtroSearch(true);
+  });
+
+  let input = inputBusc();
+  input.addEventListener("input", () => {
+    filtroSearch(false);
+  });
 });
+
+function filtroSearch(param) {
+  let input = inputBusc();
+  let filter = input.value.toLowerCase();
+
+  let ayu = ayudaPoke();
+  ayu.innerHTML = "";
+
+  DATA.forEach((e) => {
+    var palabrasEnFiltro = filter.split(" ");
+    var hallado = 0;
+    for (var filtro of palabrasEnFiltro) {
+      if (e.name.indexOf(filtro) > -1) {
+        hallado++;
+      }
+      if (param) {
+        if (hallado === palabrasEnFiltro.length) {
+          e.visibilidad = true;
+        } else {
+          e.visibilidad = false;
+        }
+      } else {
+        if (hallado === palabrasEnFiltro.length) {
+          buscarFiltroSearch(e.name);
+          console.log(e.name);
+        }
+      }
+    }
+  });
+  actualizarPokedex();
+}
+
+function buscarFiltroSearch(name) {
+  let ayu = ayudaPoke();
+  let option = document.createElement("option");
+  option.value = name;
+  ayu.appendChild(option);
+}
 
 document.addEventListener("scroll", () => {
   if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 1) {
@@ -110,7 +161,7 @@ function añadirPoke(po) {
   card.className = "card";
   card.innerHTML = `
         <img src="${po.img}" alt="${primeraLetra(po.name)}">
-        <h2>${po.name}</h2>
+        <h2>${primeraLetra(po.name)}</h2>
         <span>#${po.id}</span>
     `;
   return card;
