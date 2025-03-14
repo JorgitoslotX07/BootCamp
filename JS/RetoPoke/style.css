@@ -142,3 +142,7 @@ main {
   background: #a890f0;
   color: black;
 }
+
+.noMostrar {
+  display: none;
+}

@@ -23,7 +23,7 @@ const tipoPoke = [
   "volador",
 ];
 
-const topoPokeIng = [
+const tipoPokeIng = [
   "steel",
   "water",
   "bug",
@@ -43,6 +43,10 @@ const topoPokeIng = [
   "poison",
   "flying",
 ];
+
+let tipoPokeActivo = [];
+
+const pokedex = () => document.getElementById("grid-container");
 
 const actualizarPeticion = () => {
   peticionApiPag += 20;
@@ -68,9 +72,9 @@ async function peticioPoke() {
     let data = await response.json();
     date = data.results;
 
-    añadirPoke(date);
+    añadirPokeGen(date);
 
-    DATA.push(date);
+    DATA = DATA.concat(date);
     console.log(DATA);
 
     actualizarPeticion();
@@ -84,32 +88,39 @@ function primeraLetra(texto) {
   return texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
 }
 
-async function añadirPoke(obj) {
-  let pokedex = document.getElementById("grid-container");
+async function añadirPokeGen(obj) {
+  let poked = pokedex();
   let id = peticionApiPag;
   for (let e of obj) {
     id++;
 
     e.id = id;
-    e.img = await fotoPoke(e.url);
+    let info = await fotoPoke(e.url);
+    e.img = info.img;
+    e.tipo = info.tipo;
+    veriFiltroTipoUni(e);
 
-    let card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-        <img src="${e.img}" alt="${primeraLetra(e.name)}">
-        <h2>${e.name}</h2>
-        <span>#${e.id}</span>
-    `;
-
-    pokedex.appendChild(card);
+    poked.appendChild(añadirPoke(e));
   }
+  actualizarPokedex();
+}
+
+function añadirPoke(po) {
+  let card = document.createElement("div");
+  card.className = "card";
+  card.innerHTML = `
+        <img src="${po.img}" alt="${primeraLetra(po.name)}">
+        <h2>${po.name}</h2>
+        <span>#${po.id}</span>
+    `;
+  return card;
 }
 
 async function fotoPoke(url) {
   try {
     let response = await fetch(url);
     let data = await response.json();
-    return data.sprites.front_default;
+    return { img: data.sprites.front_default, tipo: data.types };
   } catch (error) {
     console.error("Error en la petición de la Foto:", error);
     return "error.jpg";
@@ -119,12 +130,56 @@ async function fotoPoke(url) {
 function creacionTipoPoke() {
   let box = document.getElementById("filtros");
 
-  tipoPoke.forEach((po) => {
+  tipoPoke.forEach((po, index) => {
     let fil = document.createElement("div");
     fil.className = "type " + po;
     console.log(fil.classList);
     fil.innerHTML = primeraLetra(po);
 
+    fil.addEventListener("click", () => {
+      tipoPokeActivo.push(tipoPokeIng[index]);
+      filtroTipo();
+    });
+
     box.appendChild(fil);
+  });
+}
+
+function filtroTipo() {
+  if (tipoPokeActivo.length != 0) {
+    DATA.forEach((e) => {
+      veriFiltroTipo(e);
+    });
+  } else {
+    DATA.forEach((obj) => (obj.visibilidad = true));
+  }
+  actualizarPokedex();
+}
+function veriFiltroTipo(e) {
+  if (!e.tipo.some((t) => tipoPokeActivo.includes(t.type.name))) {
+    e.visibilidad = false;
+  } else {
+    e.visibilidad = true;
+  }
+}
+
+function veriFiltroTipoUni(e) {
+  if (tipoPokeActivo.length != 0) {
+    veriFiltroTipo(e);
+  } else {
+    e.visibilidad = true;
+  }
+}
+
+function actualizarPokedex() {
+  let poked = pokedex();
+  let cards = poked.querySelectorAll(".card");
+
+  DATA.forEach((e, index) => {
+    if (e.visibilidad) {
+      cards[index].classList.remove("noMostrar");
+    } else {
+      cards[index].classList.add("noMostrar");
+    }
   });
 }
