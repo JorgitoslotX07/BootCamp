@@ -93,13 +93,13 @@ async function añadirPokeGen(obj) {
   let id = peticionApiPag;
   for (let e of obj) {
     id++;
-
     e.id = id;
+
     let info = await fotoPoke(e.url);
     e.img = info.img;
     e.tipo = info.tipo;
-    veriFiltroTipoUni(e);
 
+    veriFiltroTipoUni(e);
     poked.appendChild(añadirPoke(e));
   }
   actualizarPokedex();
@@ -137,7 +137,16 @@ function creacionTipoPoke() {
     fil.innerHTML = primeraLetra(po);
 
     fil.addEventListener("click", () => {
-      tipoPokeActivo.push(tipoPokeIng[index]);
+      let clases = fil.className.split(" ");
+      if (clases.includes("fixed")) {
+        clases = clases.filter((c) => c !== "fixed");
+        fil.className = clases.join(" ");
+        tipoPokeActivo = tipoPokeActivo.filter((c) => c !== tipoPokeIng[index]);
+      } else {
+        fil.className += " fixed";
+        tipoPokeActivo.push(tipoPokeIng[index]);
+      }
+      console.log(tipoPokeActivo);
       filtroTipo();
     });
 
