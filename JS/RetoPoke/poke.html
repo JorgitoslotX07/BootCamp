@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokémon - Bulbasaur</title>
+    <link rel="stylesheet" href="stylePoke.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="pokemon-header">
+        Pokémon: <span id="pokemon-name">Bulbasaur</span>
+      </div>
+      <div class="pokemon-id">#<span id="pokemon-id">001</span></div>
+      <img
+        id="pokemon-image"
+        class="pokemon-image"
+        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+        alt="Bulbasaur"
+      />
+
+      <div class="details">
+        <div class="info-box" id="ability-box">
+          <h3>Habilidades</h3>
+          <p id="ability-1" class="ability"></p>
+          <p id="ability-2" class="ability"></p>
+        </div>
+        <div class="info-box">
+          <h3>Datos</h3>
+          <p>Altura: <span id="height">0.7</span> m</p>
+          <p>Experiencia Base: <span id="base-exp">64</span></p>
+        </div>
+      </div>
+
+      <div class="sprite">
+        <h3>Sprite Shiny</h3>
+        <img
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png"
+          alt="Shiny Bulbasaur"
+          class="pokemon-image"
+          id="pokemon-image-shi"
+        />
+      </div>
+    </div>
+
+    <script type="module" src="pokeDetalle.js"></script>
+  </body>
+</html>

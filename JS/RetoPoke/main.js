@@ -1,6 +1,8 @@
+import { primeraLetra } from "./utils.js";
+
 let peticionApiPag = 0;
 let peticionApiPoke =
-  "https://pokeapi.co/api/v2/pokemon?offset=" + peticionApiPag + "&limit=20";
+  "https://pokeapi.co/api/v2/pokemon?offset=" + peticionApiPag + "&limit=1250";
 let DATA = [];
 const tipoPoke = [
   "acero",
@@ -54,17 +56,22 @@ const limpiar = () => document.getElementById("btnLimpiar");
 const filtros = () => document.getElementById("filtros");
 const filtrosFixed = () => document.getElementsByClassName("fixed");
 
-const actualizarPeticion = () => {
-  peticionApiPag += 20;
-  peticionApiPoke =
-    "https://pokeapi.co/api/v2/pokemon?offset=" + peticionApiPag + "&limit=20";
-};
+// const actualizarPeticion = () => {
+//   peticionApiPag += 20;
+//   peticionApiPoke =
+//     "https://pokeapi.co/api/v2/pokemon?offset=" + peticionApiPag + "&limit=20";
+// };
 
 const todoVisible = () => DATA.forEach((obj) => (obj.visibilidad = true));
+const loader = document.getElementById("loader");
+const content = document.getElementsByTagName("main");
 
-document.addEventListener("DOMContentLoaded", () => {
-  peticioPoke();
-  creacionTipoPoke();
+document.addEventListener("DOMContentLoaded", async () => {
+  content.style.display = "none";
+
+  await creacionTipoPoke();
+
+  await peticioPoke();
 
   let busc = btnBusc();
   busc.addEventListener("click", () => {
@@ -121,11 +128,11 @@ function buscarFiltroSearch(name) {
   ayu.appendChild(option);
 }
 
-document.addEventListener("scroll", () => {
-  if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 1) {
-    peticioPoke();
-  }
-});
+// document.addEventListener("scroll", () => {
+//   if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 1) {
+//     peticioPoke();
+//   }
+// });
 
 async function peticioPoke() {
   let date;
@@ -134,20 +141,15 @@ async function peticioPoke() {
     let data = await response.json();
     date = data.results;
 
-    añadirPokeGen(date);
+    await añadirPokeGen(date);
 
     DATA = DATA.concat(date);
-    console.log(DATA);
+    // console.log(DATA);
 
-    actualizarPeticion();
+    // actualizarPeticion();
   } catch (error) {
     console.error("Error en la petición:", error);
   }
-}
-
-function primeraLetra(texto) {
-  if (!texto) return "";
-  return texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
 }
 
 async function añadirPokeGen(obj) {
@@ -161,7 +163,7 @@ async function añadirPokeGen(obj) {
     e.img = info.img;
     e.tipo = info.tipo;
 
-    veriFiltroTipoUni(e);
+    await veriFiltroTipoUni(e);
     poked.appendChild(añadirPoke(e));
   }
   actualizarPokedex();
@@ -175,6 +177,16 @@ function añadirPoke(po) {
         <h2>${primeraLetra(po.name)}</h2>
         <span>#${po.id}</span>
     `;
+
+  card.addEventListener("click", () => {
+    let paramUrl = po.url;
+    let url =
+      "http://localhost:5500/JS/RetoPoke/poke.html?url=" +
+      encodeURIComponent(paramUrl);
+
+    // window.location.href = url;
+    window.open(url, "_blank");
+  });
   return card;
 }
 
@@ -189,45 +201,56 @@ async function fotoPoke(url) {
   }
 }
 
-function creacionTipoPoke() {
+async function creacionTipoPoke() {
   let box = filtros();
 
-  tipoPoke.forEach((po, index) => {
+  // tipoPoke.forEach((po, index) => {
+  for (let i = 0; i < tipoPoke.length; i++) {
+    const po = tipoPoke[i];
+
     let fil = document.createElement("div");
     fil.className = "type " + po;
     console.log(fil.classList);
     fil.innerHTML = primeraLetra(po);
 
-    fil.addEventListener("click", () => {
-      let clases = fil.className.split(" ");
-      if (clases.includes("fixed")) {
-        clases = clases.filter((c) => c !== "fixed");
-        fil.className = clases.join(" ");
-        tipoPokeActivo = tipoPokeActivo.filter((c) => c !== tipoPokeIng[index]);
+    fil.addEventListener("click", async () => {
+      if (fil.classList.contains("fixed")) {
+        fil.classList.remove("fixed");
+        let index = tipoPokeActivo.indexOf(tipoPokeIng[i]); // Buscar la posición
+
+        if (index !== -1) {
+          tipoPokeActivo.splice(index, 1); // Eliminar el elemento en esa posición
+        }
+        // tipoPokeActivo = tipoPokeActivo.filter((c) => c !== tipoPokeIng[i]);
       } else {
-        fil.className += " fixed";
-        tipoPokeActivo.push(tipoPokeIng[index]);
+        fil.classList.add("fixed");
+        tipoPokeActivo.push(tipoPokeIng[i]);
       }
       console.log(tipoPokeActivo);
-      filtroTipo();
+      await filtroTipo();
       mostarXFiltros();
     });
 
     box.appendChild(fil);
-  });
+  }
 }
 
-function filtroTipo() {
+async function filtroTipo() {
   if (tipoPokeActivo.length != 0) {
-    DATA.forEach((e) => {
-      veriFiltroTipo(e);
-    });
+    for (const e of DATA) {
+      await veriFiltroTipo(e);
+    }
   } else {
     todoVisible();
   }
   actualizarPokedex();
 }
-function veriFiltroTipo(e) {
+async function veriFiltroTipo(e) {
+  if (!e || !Array.isArray(e.tipo)) {
+    console.error("Error: e.tipo es undefined o no es un array", e);
+    return; // Salir de la función para evitar más errores
+  }
+
   if (!e.tipo.some((t) => tipoPokeActivo.includes(t.type.name))) {
     e.visibilidad = false;
   } else {
@@ -235,9 +258,9 @@ function veriFiltroTipo(e) {
   }
 }
 
-function veriFiltroTipoUni(e) {
+async function veriFiltroTipoUni(e) {
   if (tipoPokeActivo.length != 0) {
-    veriFiltroTipo(e);
+    await veriFiltroTipo(e);
   } else {
     e.visibilidad = true;
   }
@@ -254,6 +277,9 @@ function actualizarPokedex() {
       cards[index].classList.add("noMostrar");
     }
   });
+  console.log("Listo🦆");
+  loader.style.display = "none";
+  content.style.display = "block";
 }
 
 function mostarXInput() {
@@ -278,6 +304,8 @@ function mostarXFiltros() {
 }
 
 function limpiarTodo() {
+  let btnLim = limpiar();
+
   let input = inputBusc();
   let ayu = ayudaPoke();
   let filt = filtrosFixed();
@@ -293,4 +321,5 @@ function limpiarTodo() {
   todoVisible();
 
   actualizarPokedex();
+  btnLim.classList.add("noMostrar");
 }
