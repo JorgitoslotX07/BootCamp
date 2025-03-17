@@ -55,6 +55,10 @@ const inputBusc = () => document.getElementById("buscar");
 const limpiar = () => document.getElementById("btnLimpiar");
 const filtros = () => document.getElementById("filtros");
 const filtrosFixed = () => document.getElementsByClassName("fixed");
+const loader = () => document.getElementById("loader");
+
+const prevPage = () => document.getElementById("prevPage");
+const nextPage = () => document.getElementById("nextPage");
 
 // const actualizarPeticion = () => {
 //   peticionApiPag += 20;
@@ -63,12 +67,12 @@ const filtrosFixed = () => document.getElementsByClassName("fixed");
 // };
 
 const todoVisible = () => DATA.forEach((obj) => (obj.visibilidad = true));
-const loader = document.getElementById("loader");
-const content = document.getElementsByTagName("main");
+
+let currentPage = 1;
+let itemsPerPage = 20;
+let totalItems;
 
 document.addEventListener("DOMContentLoaded", async () => {
-  content.style.display = "none";
-
   await creacionTipoPoke();
 
   await peticioPoke();
@@ -87,6 +91,16 @@ document.addEventListener("DOMContentLoaded", async () => {
   let limp = limpiar();
   limp.addEventListener("click", () => {
     limpiarTodo();
+  });
+
+  let next = nextPage();
+  next.addEventListener("click", () => {
+    cambiarPagina("next");
+  });
+
+  let prev = nextPage();
+  prev.addEventListener("click", () => {
+    cambiarPagina("prev");
   });
 });
 
@@ -113,7 +127,7 @@ function filtroSearch(param) {
       } else {
         if (hallado === palabrasEnFiltro.length) {
           buscarFiltroSearch(e.name);
-          console.log(e.name);
+          // console.log(e.name);
         }
       }
     }
@@ -167,6 +181,10 @@ async function añadirPokeGen(obj) {
     poked.appendChild(añadirPoke(e));
   }
   actualizarPokedex();
+
+  let load = loader();
+  load.classList.add("noMostrar");
+  load.classList.remove("loader");
 }
 
 function añadirPoke(po) {
@@ -180,17 +198,24 @@ function añadirPoke(po) {
 
   card.addEventListener("click", () => {
     let paramUrl = po.url;
-    let url =
-      "http://localhost:5500/JS/RetoPoke/poke.html?url=" +
-      encodeURIComponent(paramUrl);
-
+    if (paramUrl) {
+      let url =
+        "http://localhost:5500/JS/RetoPoke/poke.html?url=" +
+        encodeURIComponent(paramUrl);
+      window.open(url, "_blank");
+    } else {
+      console.error("URL del Pokémon no disponible");
+    }
     // window.location.href = url;
-    window.open(url, "_blank");
   });
   return card;
 }
 
 async function fotoPoke(url) {
+  if (!url) {
+    console.error("URL de Pokémon no disponible");
+    return { img: "error.jpg", tipo: [] };
+  }
   try {
     let response = await fetch(url);
     let data = await response.json();
@@ -210,7 +235,7 @@ async function creacionTipoPoke() {
 
     let fil = document.createElement("div");
     fil.className = "type " + po;
-    console.log(fil.classList);
+    // console.log(fil.classList);
     fil.innerHTML = primeraLetra(po);
 
     fil.addEventListener("click", async () => {
@@ -226,7 +251,6 @@ async function creacionTipoPoke() {
         fil.classList.add("fixed");
         tipoPokeActivo.push(tipoPokeIng[i]);
       }
-      console.log(tipoPokeActivo);
       await filtroTipo();
       mostarXFiltros();
     });
@@ -248,13 +272,28 @@ async function filtroTipo() {
 async function veriFiltroTipo(e) {
   if (!e || !Array.isArray(e.tipo)) {
     console.error("Error: e.tipo es undefined o no es un array", e);
-    return; // Salir de la función para evitar más errores
+    // return;
+    // e.visibilidad = false;
   }
 
-  if (!e.tipo.some((t) => tipoPokeActivo.includes(t.type.name))) {
-    e.visibilidad = false;
+  if (tipoPokeActivo.length > 1) {
+    if (
+      !e.tipo.every(
+        (t) =>
+          tipoPokeActivo.includes(t.type.name) &&
+          e.tipo.length == tipoPokeActivo.length
+      )
+    ) {
+      e.visibilidad = false;
+    } else {
+      e.visibilidad = true;
+    }
   } else {
-    e.visibilidad = true;
+    if (!e.tipo.some((t) => tipoPokeActivo.includes(t.type.name))) {
+      e.visibilidad = false;
+    } else {
+      e.visibilidad = true;
+    }
   }
 }
 
@@ -277,9 +316,8 @@ function actualizarPokedex() {
       cards[index].classList.add("noMostrar");
     }
   });
-  console.log("Listo🦆");
-  loader.style.display = "none";
-  content.style.display = "block";
+  // console.log("Listo🦆");
+  totalItems = totalVisibles();
 }
 
 function mostarXInput() {
@@ -322,4 +360,34 @@ function limpiarTodo() {
 
   actualizarPokedex();
   btnLim.classList.add("noMostrar");
+}
+
+// ? Botones de mierda :c
+
+function actualizarPaginacion() {
+  let totalPages = Math.ceil(totalItems / itemsPerPage);
+
+  document.getElementById("prevPage").disabled = currentPage === 1;
+  document.getElementById("nextPage").disabled = currentPage === totalPages;
+}
+
+function cambiarPagina(direccion) {
+  let totalPages = Math.ceil(totalItems / itemsPerPage);
+
+  if (direccion === "prev" && currentPage > 1) {
+    currentPage--;
+  } else if (direccion === "next" && currentPage < totalPages) {
+    currentPage++;
+  }
+
+  actualizarPaginacion();
+}
+
+function totalVisibles() {
+  let i = 0;
+  for (const e of DATA) {
+    if (DATA.visibilidad) {
+      i++;
+    }
+  }
 }

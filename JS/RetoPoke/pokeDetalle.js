@@ -49,6 +49,22 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("height").textContent = data.height * 0.1;
   document.getElementById("base-exp").textContent = data.base_experience;
 
+  let div2 = document.getElementById("type-box");
+
+  for (const e of data.types) {
+    let pElement = document.createElement("p");
+
+    pElement.id = "type-" + i;
+    pElement.classList.add("type");
+    pElement.classList.add(e.type.name);
+
+    pElement.textContent = `${primeraLetra(e.type.name)}`;
+
+    div2.appendChild(pElement);
+
+    i++;
+  }
+
   // Mostrar sprites
   document.getElementById("pokemon-image").src = data.sprites.front_default;
   document.getElementById("pokemon-image-shi").src = data.sprites.front_shiny;
