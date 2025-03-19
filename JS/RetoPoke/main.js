@@ -1,8 +1,6 @@
 import { primeraLetra } from "./utils.js";
 
-let peticionApiPag = 0;
-let peticionApiPoke =
-  "https://pokeapi.co/api/v2/pokemon?offset=" + peticionApiPag + "&limit=1250";
+let peticionApiPoke = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=1250";
 let DATA = [];
 
 var currentPage = 1;
@@ -71,18 +69,10 @@ const loader = () => document.getElementById("loader");
 const prevPage = () => document.getElementById("prevPage");
 const nextPage = () => document.getElementById("nextPage");
 
-// const actualizarPeticion = () => {
-//   peticionApiPag += 20;
-//   peticionApiPoke =
-//     "https://pokeapi.co/api/v2/pokemon?offset=" + peticionApiPag + "&limit=20";
-// };
-
 const todoVisible = () => DATA.forEach((obj) => (obj.visibilidad = true));
-const nadaVisible = () => DATA.forEach((obj) => (obj.visibilidad = false));
 
 document.addEventListener("DOMContentLoaded", async () => {
   await creacionTipoPoke();
-
   await peticioPoke();
 
   let busc = btnBusc();
@@ -137,7 +127,6 @@ function filtroSearch(param) {
       } else {
         if (hallado === palabrasEnFiltro.length) {
           buscarFiltroSearch(e.name);
-          // console.log(e.name);
         }
       }
     }
@@ -152,12 +141,6 @@ function buscarFiltroSearch(name) {
   ayu.appendChild(option);
 }
 
-// document.addEventListener("scroll", () => {
-//   if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 1) {
-//     peticioPoke();
-//   }
-// });
-
 async function peticioPoke() {
   let date;
   try {
@@ -166,12 +149,8 @@ async function peticioPoke() {
     date = data.results;
 
     await anadirPokeGen(date);
-
     DATA = DATA.concat(date);
-    // console.log(DATA);
     actualizarPokedex();
-
-    // actualizarPeticion();
   } catch (error) {
     console.error("Error en la petición:", error);
   }
@@ -179,7 +158,7 @@ async function peticioPoke() {
 
 async function anadirPokeGen(obj) {
   let poked = pokedex();
-  let id = peticionApiPag;
+  let id = 0;
   for (let e of obj) {
     id++;
     e.id = id;
@@ -191,7 +170,6 @@ async function anadirPokeGen(obj) {
     await veriFiltroTipoUni(e);
     poked.appendChild(anadirPoke(e));
   }
-  // await actualizarPokedex();
 
   let load = loader();
   load.classList.add("noMostrar");
@@ -253,10 +231,10 @@ async function creacionTipoPoke() {
     fil.addEventListener("click", async () => {
       if (fil.classList.contains("fixed")) {
         fil.classList.remove("fixed");
-        let index = tipoPokeActivo.indexOf(tipoPokeIng[i]); // Buscar la posición
+        let index = tipoPokeActivo.indexOf(tipoPokeIng[i]);
 
         if (index !== -1) {
-          tipoPokeActivo.splice(index, 1); // Eliminar el elemento en esa posición
+          tipoPokeActivo.splice(index, 1);
         }
         // tipoPokeActivo = tipoPokeActivo.filter((c) => c !== tipoPokeIng[i]);
       } else {
@@ -285,8 +263,6 @@ async function filtroTipo() {
 async function veriFiltroTipo(e) {
   if (!e || !Array.isArray(e.tipo)) {
     console.error("Error: e.tipo es undefined o no es un array", e);
-    // return;
-    // e.visibilidad = false;
   }
 
   if (tipoPokeActivo.length > 1) {
@@ -407,8 +383,6 @@ function cambiarPagina(direccion) {
   } else if (direccion) {
     //&& currentPage < totalPages
     currentPage++;
-    // currentPage = currentPage + 1;
-    // currentPage = 2;
     console.log(currentPage, "next");
   }
 
@@ -416,13 +390,4 @@ function cambiarPagina(direccion) {
   document.documentElement.scrollTop = 0;
 
   actualizarPaginacion();
-}
-
-function totalVisibles() {
-  let i = 0;
-  for (const e of DATA) {
-    if (DATA.visibilidad) {
-      i++;
-    }
-  }
 }
