@@ -4,6 +4,11 @@ let peticionApiPag = 0;
 let peticionApiPoke =
   "https://pokeapi.co/api/v2/pokemon?offset=" + peticionApiPag + "&limit=1250";
 let DATA = [];
+
+var currentPage = 1;
+let itemsPerPage = 20;
+let totalItems;
+
 const tipoPoke = [
   "acero",
   "agua",
@@ -67,10 +72,7 @@ const nextPage = () => document.getElementById("nextPage");
 // };
 
 const todoVisible = () => DATA.forEach((obj) => (obj.visibilidad = true));
-
-let currentPage = 1;
-let itemsPerPage = 20;
-let totalItems;
+const nadaVisible = () => DATA.forEach((obj) => (obj.visibilidad = false));
 
 document.addEventListener("DOMContentLoaded", async () => {
   await creacionTipoPoke();
@@ -95,12 +97,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   let next = nextPage();
   next.addEventListener("click", () => {
-    cambiarPagina("next");
+    cambiarPagina(true);
   });
 
-  let prev = nextPage();
+  let prev = prevPage();
   prev.addEventListener("click", () => {
-    cambiarPagina("prev");
+    cambiarPagina(false);
   });
 });
 
@@ -155,10 +157,11 @@ async function peticioPoke() {
     let data = await response.json();
     date = data.results;
 
-    await añadirPokeGen(date);
+    await anadirPokeGen(date);
 
     DATA = DATA.concat(date);
     // console.log(DATA);
+    actualizarPokedex();
 
     // actualizarPeticion();
   } catch (error) {
@@ -166,7 +169,7 @@ async function peticioPoke() {
   }
 }
 
-async function añadirPokeGen(obj) {
+async function anadirPokeGen(obj) {
   let poked = pokedex();
   let id = peticionApiPag;
   for (let e of obj) {
@@ -178,16 +181,16 @@ async function añadirPokeGen(obj) {
     e.tipo = info.tipo;
 
     await veriFiltroTipoUni(e);
-    poked.appendChild(añadirPoke(e));
+    poked.appendChild(anadirPoke(e));
   }
-  actualizarPokedex();
+  // await actualizarPokedex();
 
   let load = loader();
   load.classList.add("noMostrar");
   load.classList.remove("loader");
 }
 
-function añadirPoke(po) {
+function anadirPoke(po) {
   let card = document.createElement("div");
   card.className = "card";
   card.innerHTML = `
@@ -195,6 +198,7 @@ function añadirPoke(po) {
         <h2>${primeraLetra(po.name)}</h2>
         <span>#${po.id}</span>
     `;
+  card.classList.add("noMostrar");
 
   card.addEventListener("click", () => {
     let paramUrl = po.url;
@@ -305,19 +309,50 @@ async function veriFiltroTipoUni(e) {
   }
 }
 
-function actualizarPokedex() {
+async function actualizarPokedex() {
   let poked = pokedex();
   let cards = poked.querySelectorAll(".card");
 
-  DATA.forEach((e, index) => {
-    if (e.visibilidad) {
-      cards[index].classList.remove("noMostrar");
-    } else {
-      cards[index].classList.add("noMostrar");
-    }
-  });
+  // DATA.forEach((e, index) => {
+  //   if (e.visibilidad) {
+  //     cards[index].classList.remove("noMostrar");
+  //   } else {
+  //     cards[index].classList.add("noMostrar");
+  //   }
+  // });
   // console.log("Listo🦆");
-  totalItems = totalVisibles();
+
+  let mostrar = 0;
+  let iteraconActual = 0;
+  let veriMostrar = 0;
+  let yaMostrado = (currentPage - 1) * itemsPerPage;
+  while (iteraconActual != DATA.lengtho) {
+    //  && mostrar != yaMostrad
+    let date = DATA[iteraconActual];
+    if (date.visibilidad) {
+      console.log("date", date);
+      console.log("dmostrarate", mostrar);
+      console.log("dyaMostradoate", yaMostrado);
+      console.log("iteraconActual", iteraconActual);
+    }
+
+    if (
+      date.visibilidad &&
+      veriMostrar == yaMostrado &&
+      mostrar < itemsPerPage
+    ) {
+      cards[iteraconActual].classList.remove("noMostrar");
+      mostrar++;
+    } else {
+      cards[iteraconActual].classList.add("noMostrar");
+    }
+
+    if (veriMostrar != yaMostrado && date.visibilidad) {
+      veriMostrar++;
+    }
+
+    iteraconActual++;
+  }
 }
 
 function mostarXInput() {
@@ -367,18 +402,25 @@ function limpiarTodo() {
 function actualizarPaginacion() {
   let totalPages = Math.ceil(totalItems / itemsPerPage);
 
-  document.getElementById("prevPage").disabled = currentPage === 1;
-  document.getElementById("nextPage").disabled = currentPage === totalPages;
+  document.getElementById("prevPage").disabled = currentPage == 1;
+  document.getElementById("nextPage").disabled = currentPage == totalPages;
 }
 
 function cambiarPagina(direccion) {
   let totalPages = Math.ceil(totalItems / itemsPerPage);
-
-  if (direccion === "prev" && currentPage > 1) {
+  console.log(totalPages);
+  if (!direccion && currentPage > 1) {
     currentPage--;
-  } else if (direccion === "next" && currentPage < totalPages) {
+  } else if (direccion) {
+    //&& currentPage < totalPages
     currentPage++;
+    // currentPage = currentPage + 1;
+    // currentPage = 2;
+    console.log(currentPage, "next");
   }
+
+  actualizarPokedex();
+  document.documentElement.scrollTop = 0;
 
   actualizarPaginacion();
 }
