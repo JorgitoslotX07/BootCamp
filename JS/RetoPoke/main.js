@@ -9,6 +9,12 @@ var currentPage = 1;
 let itemsPerPage = 20;
 let totalItems;
 
+const resetearPage = () => {
+  currentPage = 1;
+  itemsPerPage = 20;
+  actualizarPokedex();
+};
+
 const tipoPoke = [
   "acero",
   "agua",
@@ -88,11 +94,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   input.addEventListener("input", () => {
     filtroSearch(false);
     mostarXInput();
+    resetearPage();
   });
 
   let limp = limpiar();
   limp.addEventListener("click", () => {
     limpiarTodo();
+    resetearPage();
   });
 
   let next = nextPage();
@@ -257,6 +265,7 @@ async function creacionTipoPoke() {
       }
       await filtroTipo();
       mostarXFiltros();
+      resetearPage();
     });
 
     box.appendChild(fil);
@@ -313,15 +322,6 @@ async function actualizarPokedex() {
   let poked = pokedex();
   let cards = poked.querySelectorAll(".card");
 
-  // DATA.forEach((e, index) => {
-  //   if (e.visibilidad) {
-  //     cards[index].classList.remove("noMostrar");
-  //   } else {
-  //     cards[index].classList.add("noMostrar");
-  //   }
-  // });
-  // console.log("Listo🦆");
-
   let mostrar = 0;
   let iteraconActual = 0;
   let veriMostrar = 0;
@@ -329,13 +329,6 @@ async function actualizarPokedex() {
   while (iteraconActual != DATA.lengtho) {
     //  && mostrar != yaMostrad
     let date = DATA[iteraconActual];
-    if (date.visibilidad) {
-      console.log("date", date);
-      console.log("dmostrarate", mostrar);
-      console.log("dyaMostradoate", yaMostrado);
-      console.log("iteraconActual", iteraconActual);
-    }
-
     if (
       date.visibilidad &&
       veriMostrar == yaMostrado &&
