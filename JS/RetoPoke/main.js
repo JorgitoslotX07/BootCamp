@@ -302,7 +302,7 @@ async function actualizarPokedex() {
   let iteraconActual = 0;
   let veriMostrar = 0;
   let yaMostrado = (currentPage - 1) * itemsPerPage;
-  while (iteraconActual != DATA.lengtho) {
+  while (iteraconActual != DATA.length) {
     //  && mostrar != yaMostrad
     let date = DATA[iteraconActual];
     if (

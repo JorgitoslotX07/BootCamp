@@ -6,3 +6,8 @@ export interface Pokemon {
   url: string;
   visibilidad: boolean;
 }
+
+export interface PokemonData {
+  img: string;
+  tipo: string[];
+}

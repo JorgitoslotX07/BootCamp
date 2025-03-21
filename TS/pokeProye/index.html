@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pokedex</title>
+  <link rel="stylesheet" href="src/css/style.css" />
+</head>
+
+<body>
+  <div id="loader" class="loader">
+    <div class="spinner"></div>
+    <p>Cargando...</p>
+  </div>
+
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <h2>Editar Pokémon #<span id="idPoke"></span></h2>
+      <label for="pokemon-name">Nombre:</label>
+      <input type="text" id="pokemon-name" />
+
+      <label for="pokemon-image">Imagen URL:</labelfor>
+        <input type="text" id="pokemon-image" />
+
+        <label for="pokemon-types">Tipos:</label>
+        <input type="text" id="pokemon-types" placeholder="Ej: Planta, Veneno" />
+
+        <button id="save-btn">Guardar</button>
+        <button id="close-btn">Cerrar</button>
+    </div>
+  </div>
+
+  <main>
+    <div class="pokedex">
+      <h1>Pokedex</h1>
+      <a href="#" id="reiniciarLocal">⛩ ✔ ⛩</a>
+      <input list="ayudaPoke" type="text" class="search-bar" placeholder="Search" id="buscar" />
+      <datalist id="ayudaPoke"></datalist>
+      <button class="search-button" id="btnBuscar">🔍</button>
+      <button class="close-button noMostrar" id="btnLimpiar">❌</button>
+
+      <div id="filtros"></div>
+      <button id="btnAnadirPoke">
+        <i>➕</i> Añadir Pokémon
+      </button>
+      <div id="popupAnadirPoke" class="popup-container">
+        <div class="popup-content">
+          <span class="close-popup">&times;</span>
+          <h2>Añadir Pokémon</h2>
+
+          <label for="pokeNombre">Nombre:</label>
+          <input type="text" id="pokeNombre" placeholder="Ej: Pikachu">
+
+          <label for="pokeImagen">URL de Imagen:</label>
+          <input type="text" id="pokeImagen" placeholder="URL de la imagen">
+
+          <label for="pokeTipo">Tipo(s):</label>
+          <input type="text" id="pokeTipo" placeholder="Ej: Eléctrico">
+
+          <button id="btnGuardarPoke">Guardar</button>
+        </div>
+      </div>
+      <div class="grid-container" id="grid-container"></div>
+
+  </main>
+  <footer>
+    <div id="pagination">
+      <button id="prevPage">Anterior</button>
+      <button id="nextPage">Siguiente</button>
+    </div>
+  </footer>
+
+  <script type="module" src="./src/main.ts"></script>
+</body>
+
+</html>
