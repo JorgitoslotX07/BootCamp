@@ -12,9 +12,11 @@ export const filtros = () => document.getElementById("filtros");
 export const filtrosFixed = () => document.getElementsByClassName("fixed");
 export const loader = () => document.getElementById("loader");
 export const reiniciar = () => document.getElementById("reiniciarLocal");
+export const pokeRandom = () => document.getElementById("pokeRandom");
 
 export const prevPage = () => document.getElementById("prevPage");
 export const nextPage = () => document.getElementById("nextPage");
+export const actuPage = () => document.getElementById("actuPage");
 
 export const popUp = () => document.getElementById("popup");
 export const idPoke = () => document.getElementById("idPoke");
@@ -30,4 +32,6 @@ export const anadirImgPoke = () => document.getElementById("pokeImagen");
 export const anadirTipoPoke = () => document.getElementById("pokeTipo");
 export const anadirGuardarPoke = () =>
   document.getElementById("btnGuardarPoke");
+export const cerrarAnadirPoke = () => document.getElementById("cerrarAnadir");
+
 export const btnAnadirPoke = () => document.getElementById("btnAnadirPoke");

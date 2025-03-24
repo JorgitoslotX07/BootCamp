@@ -39,14 +39,14 @@
       <datalist id="ayudaPoke"></datalist>
       <button class="search-button" id="btnBuscar">🔍</button>
       <button class="close-button noMostrar" id="btnLimpiar">❌</button>
-
+<a href="#" id="pokeRandom">⛩ ❌ ⛩</a>
       <div id="filtros"></div>
       <button id="btnAnadirPoke">
         <i>➕</i> Añadir Pokémon
       </button>
       <div id="popupAnadirPoke" class="popup-container">
         <div class="popup-content">
-          <span class="close-popup">&times;</span>
+          <span class="close-popup" id="cerrarAnadir">&times;</span>
           <h2>Añadir Pokémon</h2>
 
           <label for="pokeNombre">Nombre:</label>
@@ -67,6 +67,7 @@
   <footer>
     <div id="pagination">
       <button id="prevPage">Anterior</button>
+      <select id="actuPage"></select>
       <button id="nextPage">Siguiente</button>
     </div>
   </footer>

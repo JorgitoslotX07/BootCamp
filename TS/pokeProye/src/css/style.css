@@ -223,7 +223,7 @@ main {
   }
 }
 
-#pagination {
+/* #pagination {
   text-align: center;
   margin-top: 20px;
 }
@@ -238,6 +238,40 @@ main {
 #pagination button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
+} */
+
+#pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+#prevPage,
+#nextPage {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  background-color: #f8f8f8;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#prevPage:hover,
+#nextPage:hover {
+  background-color: #e0e0e0;
+}
+
+#actuPage {
+  padding: 8px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+
+  direction: rtl;
+  text-align: right;
 }
 
 .modif,

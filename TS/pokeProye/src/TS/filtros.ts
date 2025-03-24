@@ -37,15 +37,6 @@ async function veriFiltroTipo(e: PokemonClass) {
     }
   }
 }
-
-// export async function veriFiltroTipoUni(e: PokemonClass) {
-//   if (tipoPokeActivo.length != 0) {
-//     await veriFiltroTipo(e);
-//   } else {
-//     e.visibilidad = true;
-//   }
-// }
-
 export function mostarXInput() {
   let btnBusc = inputBusc() as HTMLInputElement;
   let btnLim = limpiar() as HTMLButtonElement;

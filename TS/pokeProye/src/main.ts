@@ -9,16 +9,20 @@ import {
   pokedex,
   filtrosFixed,
   ayudaPoke,
-  anadirPokePopUp,
   reiniciar,
   anadirGuardarPoke,
   btnAnadirPoke,
+  actuPage,
+  cerrarAnadirPoke,
+  pokeRandom,
 } from "./TS/util";
 import {
   creacionTipoPoke,
   reiniciarTipoPokeActivo,
   todoVisible,
   mostrarPoke,
+  reiniciarTipoPoke,
+  enviarPokeDetalle,
 } from "./TS/generacionesFRONT";
 
 import { borarLocalStorage, peticionLocalPoke } from "./TS/localStorage";
@@ -28,11 +32,17 @@ import {
   currentPage,
   itemsPerPage,
   resetearPage,
+  paginasDisponibles,
+  cambiarPaginaAbosuluto,
+  setCurrentPage,
+  actualizarPaginacion,
 } from "./TS/paginacion";
-import { filtroSearch, mostarXInput } from "./TS/filtros";
+import { filtroSearch, mostarXInput, filtroTipo } from "./TS/filtros";
 import { visibilidadPopUpAnadir, botonesPopUpAnadir } from "./TS/modifPoke";
 
 let DATA: Array<PokemonClass>;
+const params: URLSearchParams = new URLSearchParams(window.location.search);
+const page: number | null = Number(params.get("page"));
 
 document.addEventListener("DOMContentLoaded", async () => {
   await crearPag();
@@ -67,24 +77,39 @@ document.addEventListener("DOMContentLoaded", async () => {
     load?.classList.add("loader");
     load?.classList.remove("noMostrar");
 
-    peticionLocalPoke();
-    actualizarPokedex();
+    reiniciarPag();
+    // actualizarPokedex();
   });
 
   let popAnadir: HTMLElement | null = btnAnadirPoke();
   popAnadir?.addEventListener("click", () => {
-    console.log("holaaa");
     visibilidadPopUpAnadir();
 
     let guardarNewPoke: HTMLElement | null = anadirGuardarPoke();
     guardarNewPoke?.addEventListener("click", () => botonesPopUpAnadir(DATA));
+  });
+
+  let popCerrarAnadir: HTMLElement | null = cerrarAnadirPoke();
+  popCerrarAnadir?.addEventListener("click", () => {
+    visibilidadPopUpAnadir();
+  });
+
+  let actualPage = actuPage() as HTMLSelectElement;
+  actualPage?.addEventListener("change", () => {
+    cambiarPaginaAbosuluto(Number(actualPage.value), DATA);
+  });
+
+  let pokeR: HTMLElement | null = pokeRandom();
+  pokeR?.addEventListener("click", () => {
+    let po: PokemonClass = DATA[Math.floor(Math.random() * DATA.length)];
+    enviarPokeDetalle(po);
   });
 });
 
 export function generarPokesComun(pokemons: Array<PokemonClass>) {
   DATA = [];
   DATA.push(...pokemons);
-  console.log(pokemons);
+  // console.log(pokemons);
 
   actualizarTotal(DATA);
   actualizarPokedex();
@@ -119,6 +144,7 @@ export async function actualizarPokedex() {
     }
     iteraconActual++;
   }
+  paginasDisponibles(DATA);
 }
 
 function limpiarTodo() {
@@ -144,6 +170,18 @@ function limpiarTodo() {
 
 async function crearPag() {
   await peticionLocalPoke();
-  //necestio esperar a que se genera correctamenta DATA antes de la siguiente funcion
+
   await creacionTipoPoke(DATA);
+  await filtroTipo(DATA);
+  if (page != null) {
+    setCurrentPage(page, DATA);
+  }
+  actualizarPaginacion(DATA);
+}
+
+async function reiniciarPag() {
+  limpiarTodo();
+  await peticionLocalPoke();
+  await reiniciarTipoPoke(DATA);
+  resetearPage();
 }
