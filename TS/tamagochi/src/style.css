@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "walker";
+  src: url("./css/font/walker-bot-ldr/walker_bot_ldr.ttf") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
 body {
   margin: 0px;
   padding: 0px;
@@ -36,13 +42,13 @@ main {
 }
 
 .box-5 {
-  grid-column: 7 / 9;
-  grid-row: 6 / 10;
-  background-color: rgb(227, 71, 217);
+  grid-column: 6 / 10;
+  grid-row: 4 / 12;
+  text-align: center;
 }
 
 .lineaVida {
-  background-color: white;
+  background-color: black;
   width: 40vw;
   height: 2vh;
   margin: 20px 40px;
@@ -59,5 +65,64 @@ main {
 }
 
 .lideaBott {
-  justify-content: end;
+  position: absolute;
+  bottom: 20px;
+}
+
+.lideaTop {
+  position: absolute;
+  top: 10px;
+}
+
+.lideaTotal {
+  position: absolute;
+  bottom: 135px;
+  width: 21svw;
+  height: 2vh;
+  margin: 20px 40px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: black;
+  text-align: left;
+}
+
+.porcetajeVida {
+  margin: 7px;
+  font-family: "walker";
+  font-size: 20px;
+}
+
+#zorro {
+  height: 300px;
+}
+
+.box-botones {
+  display: flex;
+  gap: 35px;
+}
+
+.botonesAcciones {
+  height: 40px;
+  width: 40px;
+  background-color: antiquewhite;
+  border-radius: 50%;
+  border: black solid 5px;
+}
+
+.box-botonesTop {
+  position: absolute;
+  top: 75px;
+}
+
+.box-botonesBott {
+  position: absolute;
+  bottom: 70px;
+}
+
+.box-botonesLeft {
+  left: 20px;
+}
+
+.box-botonesRigth {
+  right: 20px;
 }
