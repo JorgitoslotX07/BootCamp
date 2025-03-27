@@ -1,42 +1,18 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pokedex</title>
-    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
-    <div id="loader" class="loader">
-      <div class="spinner"></div>
-      <p>Cargando...</p>
-    </div>
-
     <main>
-      <div class="pokedex">
-        <h1>Pokedex</h1>
-        <input
-          list="ayudaPoke"
-          type="text"
-          class="search-bar"
-          placeholder="Search"
-          id="buscar"
-        />
-        <datalist id="ayudaPoke"></datalist>
-        <button class="search-button" id="btnBuscar">🔍</button>
-        <button class="close-button noMostrar" id="btnLimpiar">❌</button>
-
-        <div id="filtros"></div>
-        <div class="grid-container" id="grid-container"></div>
-      </div>
+      <div class="box box-1"></div>
+      <div class="box box-2"></div>
+      <div class="box box-3"></div>
+      <div class="box box-4"></div>
     </main>
-    <footer>
-      <div id="pagination">
-        <button id="prevPage">Anterior</button>
-        <button id="nextPage">Siguiente</button>
-      </div>
-    </footer>
-
-    <script type="module" src="./javaScript/main.ts"></script>
+    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
