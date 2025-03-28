@@ -1,0 +1,56 @@
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+.fondo {
+  height: 100vh;
+  width: 100vw;
+  font-size: 25px;
+}
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+@include media-breakpoint-between(xs, lg) {
+  .fondo {
+    background-color: violet;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .fondo {
+    font-size: 50px;
+  }
+}
+@include media-breakpoint-up(md) {
+  .fondo {
+    font-size: 75px;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .fondo {
+    font-size: 100px;
+    background-color: green;
+  }
+}
+
+@include media-breakpoint-between(lg, xxl) {
+  .fondo {
+    background-color: green;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .fondo {
+    font-size: 125px;
+  }
+}
+
+@include media-breakpoint-up(xxl) {
+  .fondo {
+    font-size: 150px;
+  }
+}
